@@ -1,0 +1,10 @@
+{"Filepath":"include/QtPacketProtocol/qtpacketprotocolversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTPACKETPROTOCOL_VERSION","QTPACKETPROTOCOL_VERSION_STR","QT_QTPACKETPROTOCOL_VERSION_H"]}]}
+{"Filepath":"include/QtQml/qtqmlversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQML_VERSION","QTQML_VERSION_STR","QT_QTQML_VERSION_H"]}]}
+{"Filepath":"include/QtQmlDebug/qtqmldebugversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQMLDEBUG_VERSION","QTQMLDEBUG_VERSION_STR","QT_QTQMLDEBUG_VERSION_H"]}]}
+{"Filepath":"include/QtQmlModels/qtqmlmodelsversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQMLMODELS_VERSION","QTQMLMODELS_VERSION_STR","QT_QTQMLMODELS_VERSION_H"]}]}
+{"Filepath":"include/QtQmlWorkerScript/qtqmlworkerscriptversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQMLWORKERSCRIPT_VERSION","QTQMLWORKERSCRIPT_VERSION_STR","QT_QTQMLWORKERSCRIPT_VERSION_H"]}]}
+{"Filepath":"include/QtQuick/qtquickversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQUICK_VERSION","QTQUICK_VERSION_STR","QT_QTQUICK_VERSION_H"]}]}
+{"Filepath":"include/QtQuickParticles/qtquickparticlesversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQUICKPARTICLES_VERSION","QTQUICKPARTICLES_VERSION_STR","QT_QTQUICKPARTICLES_VERSION_H"]}]}
+{"Filepath":"include/QtQuickShapes/qtquickshapesversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQUICKSHAPES_VERSION","QTQUICKSHAPES_VERSION_STR","QT_QTQUICKSHAPES_VERSION_H"]}]}
+{"Filepath":"include/QtQuickTest/qtquicktestversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQUICKTEST_VERSION","QTQUICKTEST_VERSION_STR","QT_QTQUICKTEST_VERSION_H"]}]}
+{"Filepath":"include/QtQuickWidgets/qtquickwidgetsversion.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQUICKWIDGETS_VERSION","QTQUICKWIDGETS_VERSION_STR","QT_QTQUICKWIDGETS_VERSION_H"]}]}

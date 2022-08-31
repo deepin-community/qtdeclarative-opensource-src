@@ -1,0 +1,2 @@
+#dpkg version problem, it will be deleted after upgrading to version 1.20
+libqt5qml5: unknown-meta-field-in-symbols-file *

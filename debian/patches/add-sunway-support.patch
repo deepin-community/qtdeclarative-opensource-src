@@ -1,0 +1,39 @@
+Description: add sunway support
+Author: Miao Changwei <miaochangwei@uniontech.com>
+
+---
+Last-Update: 2022-07-28
+
+--- qtdeclarative-opensource-src-5.15.3.orig/src/3rdparty/masm/wtf/Platform.h
++++ qtdeclarative-opensource-src-5.15.3/src/3rdparty/masm/wtf/Platform.h
+@@ -70,6 +70,11 @@
+ #define WTF_CPU_ALPHA 1
+ #endif
+ 
++/* CPU(SW_64) - Sunway */
++#if defined(__sw_64__)
++#define WTF_CPU_SW_64 1
++#endif
++
+ /* CPU(IA64) - Itanium / IA-64 */
+ #if defined(__ia64__)
+ #define WTF_CPU_IA64 1
+@@ -334,7 +339,7 @@
+ 
+ #endif /* ARM */
+ 
+-#if CPU(ARM) || CPU(MIPS) || CPU(SH4) || CPU(SPARC)
++#if CPU(ARM) || CPU(MIPS) || CPU(SH4) || CPU(SPARC) || CPU(SW_64)
+ #define WTF_CPU_NEEDS_ALIGNED_ACCESS 1
+ #endif
+ 
+@@ -734,7 +739,8 @@
+     || CPU(ARM64) \
+     || CPU(SPARC64) \
+     || CPU(S390X) \
+-    || CPU(PPC64)
++    || CPU(PPC64) \
++    || CPU(SW_64)
+ #define WTF_USE_JSVALUE64 1
+ #else
+ #define WTF_USE_JSVALUE32_64 1

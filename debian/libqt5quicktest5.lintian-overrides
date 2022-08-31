@@ -1,0 +1,6 @@
+# This dependency has been added to track external packages building against
+# our private headers. It is ok if internal packages depend on the ABI one.
+libqt5quicktest5: symbols-declares-dependency-on-other-package
+
+#dpkg version problem, it will be deleted after upgrading to version 1.20
+libqt5quicktest5: unknown-meta-field-in-symbols-file *
