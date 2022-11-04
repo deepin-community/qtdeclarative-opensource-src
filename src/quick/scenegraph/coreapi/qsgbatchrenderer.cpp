@@ -1878,7 +1878,7 @@ bool Renderer::checkOverlap(int first, int last, const Rect &bounds)
 {
     for (int i=first; i<=last; ++i) {
         Element *e = m_alphaRenderList.at(i);
-        if (!e || e->batch)
+        if (!e)
             continue;
         Q_ASSERT(e->boundsComputed);
         if (e->bounds.intersects(bounds))
@@ -1949,8 +1949,10 @@ void Renderer::prepareAlphaBatches()
                 continue;
             if (ej->root != ei->root || ej->isRenderNode)
                 break;
-            if (ej->batch)
+            if (ej->batch) {
+                overlapBounds |= ej->bounds;
                 continue;
+            }
 
             QSGGeometryNode *gnj = ej->node;
             if (gnj->geometry()->vertexCount() == 0)
@@ -1958,7 +1960,11 @@ void Renderer::prepareAlphaBatches()
 
             if (gni->clipList() == gnj->clipList()
                     && gni->geometry()->drawingMode() == gnj->geometry()->drawingMode()
-                    && (gni->geometry()->drawingMode() != QSGGeometry::DrawLines || gni->geometry()->lineWidth() == gnj->geometry()->lineWidth())
+                    && (gni->geometry()->drawingMode() != QSGGeometry::DrawLines
+                        || (gni->geometry()->lineWidth() == gnj->geometry()->lineWidth()
+                            // Must not do overlap checks when the line width is not 1,
+                            // we have no knowledge how such lines are rasterized.
+                            && gni->geometry()->lineWidth() == 1.0f))
                     && gni->geometry()->attributes() == gnj->geometry()->attributes()
                     && gni->inheritedOpacity() == gnj->inheritedOpacity()
                     && gni->activeMaterial()->type() == gnj->activeMaterial()->type()
@@ -4036,12 +4042,14 @@ void Renderer::renderBatches()
         if (Q_LIKELY(renderAlpha)) {
             for (int i=0; i<m_alphaBatches.size(); ++i) {
                 Batch *b = m_alphaBatches.at(i);
-                if (b->merged)
+                if (b->merged) {
                     renderMergedBatch(b);
-                else if (b->isRenderNode)
+                } else if (b->isRenderNode) {
+                    m_current_projection_matrix = projectionMatrix();
                     renderRenderNode(b);
-                else
+                } else {
                     renderUnmergedBatch(b);
+                }
             }
         }
 
@@ -4444,6 +4452,9 @@ void Renderer::renderRenderNode(Batch *batch) // legacy (GL-only)
         opacity = opacity->parent();
     }
 
+    // having DepthAwareRendering leaves depth test on in the alpha pass
+    const bool depthTestWasEnabled = m_useDepthBuffer;
+
     glDisable(GL_STENCIL_TEST);
     glDisable(GL_SCISSOR_TEST);
     glDisable(GL_DEPTH_TEST);
@@ -4478,7 +4489,9 @@ void Renderer::renderRenderNode(Batch *batch) // legacy (GL-only)
         m_currentClipType = ClipState::NoClip;
     }
 
-    if (changes & QSGRenderNode::DepthState)
+    if (depthTestWasEnabled)
+        glEnable(GL_DEPTH_TEST);
+    else if (changes & QSGRenderNode::DepthState)
         glDisable(GL_DEPTH_TEST);
 
     if (changes & QSGRenderNode::ColorState)
