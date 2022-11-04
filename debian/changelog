@@ -1,3 +1,9 @@
+qtdeclarative-opensource-src (5.15.7-1+dde) unstable; urgency=medium
+
+  * New upstream release (5.15.7).
+
+ -- Duan Ting <duanting@uniontech.com>  Fri, 04 Nov 2022 11:40:54 +0800
+
 qtdeclarative-opensource-src (5.15.3.1-1+deepin) stable; urgency=medium
 
   * ['Rebuild  against by  current gcc 11.2']
