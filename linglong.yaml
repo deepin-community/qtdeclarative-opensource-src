@@ -1,0 +1,36 @@
+package:
+  id: qtdeclarative
+  name: qtdeclarative
+  kind: lib
+  version: 5.15.7-1+dde
+  description: |
+    qtdeclarative
+
+base:
+  id: org.deepin.base
+  version: 23.0.0
+
+depends:
+  - id: qtbase
+    version: 5.15.7-1+dde
+
+source:
+  kind: local
+  patch:
+    - debian/patches/gcc_11.patch
+    - debian/patches/tst_qmldiskcache_big_endian.patch
+    - debian/patches/support_apos_in_styled_text.patch
+    - debian/patches/fix_sweep_step.patch
+    - debian/patches/fix_flickable_wheel_velocity_calculation.patch
+    - debian/patches/use_delay_properly_in_mousewheel.patch
+    - debian/patches/disableopengltests.patch
+    - debian/patches/fix_test_remove_qlibraryinfo.patch
+    - debian/patches/wait_for_window_exposed.patch
+    - debian/patches/remove_youtube_iframe.patch
+    - debian/patches/riscv64-latomic.patch
+    - debian/patches/python3.patch
+    - debian/patches/add-sunway-support.patch
+
+build:
+  kind: qmake
+
