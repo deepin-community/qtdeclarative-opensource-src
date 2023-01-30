@@ -1,3 +1,9 @@
+qtdeclarative-opensource-src (5.15.8-1+dde) UNRELEASED; urgency=medium
+
+  * New upstream release (5.15.8).
+
+ -- Lu YaNing <luyaning@uniontech.com>  Mon, 30 Jan 2023 11:47:37 +0800
+
 qtdeclarative-opensource-src (5.15.7.1-1+dde) unstable; urgency=medium
 
   * Fixed the incorrect installation path of qtdeclarative5-dev-tools
